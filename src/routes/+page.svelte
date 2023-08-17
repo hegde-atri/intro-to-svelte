@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<script>
+	import { goto, afterNavigate, beforeNavigate } from '$app/navigation';
+
+	const handleClick = () => {
+		goto('/profile');
+	};
+	beforeNavigate((navigation) => {
+		console.log({ before: navigation });
+	});
+	afterNavigate((navigation) => {
+		console.log({ after: navigation });
+	});
+</script>
+
+<h1>Hello World</h1>
+
+<button on:click={handleClick}>Profile page</button>
